@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Maya - Armonía Integral</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --arena-maya: #DCC7B1;
+            --tierra-oscura: #4A4238;
+            --oro-mate: #C4A484;
+            --blanco-crema: #FDFBFA;
+            --verde-salvia: #F2F4F0;
+            --arena-suave: #F8F3ED;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--blanco-crema); color: var(--tierra-oscura); scroll-behavior: smooth; overflow-x: hidden; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* --- ANIMACIONES DE APARICIÓN (REVEAL) --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- ESTILOS DEL CARRITO --- */
+        .qty-btn {
+            width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; border: 1.5px solid var(--arena-maya); background: white;
+            transition: all 0.2s ease; cursor: pointer; font-weight: bold;
+        }
+        .qty-btn:hover { background: var(--tierra-oscura); color: white; border-color: var(--tierra-oscura); transform: scale(1.1); }
+        
+        #cart-items-list {
+            min-height: 100px; max-height: calc(100vh - 480px); overflow-y: auto;
+            scrollbar-width: thin; scrollbar-color: var(--arena-maya) transparent;
+        }
+        #cart-items-list::-webkit-scrollbar { width: 4px; }
+        #cart-items-list::-webkit-scrollbar-thumb { background: var(--arena-maya); border-radius: 10px; }
+
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+        .vibrate { animation: shake 0.3s ease-in-out; }
+    </style>
+</head>
+<body>
+    <audio id="chime-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+
+    <header class="py-16 text-center" style="background-color: var(--arena-maya);">
+        <div class="relative inline-block group">
+            <img src="photo_2026-02-18_20-54-47.jpg" alt="Ana Maya" 
+                 class="w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 rounded-full border-8 border-white shadow-2xl object-cover transition-transform duration-500 group-hover:scale-105">
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold italic mb-2 text-[#4A4238]">Ana Maya</h1>
+        <p class="uppercase tracking-[0.5em] text-[10px] md:text-[12px] font-semibold opacity-80 text-[#4A4238]">Terapeuta Integral</p>
+    </header>
+
+    <nav class="sticky top-0 bg-white/90 backdrop-blur-md z-40 border-b border-[var(--arena-maya)]/30 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="italic font-serif text-lg text-[var(--oro-mate)]">@byanamaya</span>
+            <button id="cart-btn" onclick="toggleCart()" class="bg-[var(--tierra-oscura)] text-[var(--arena-maya)] px-6 py-2 rounded-full flex items-center gap-3 shadow-lg transition-transform active:scale-95">
+                <span class="text-xs font-bold uppercase tracking-widest">Mi Bienestar</span>
+                <span id="cart-counter" class="bg-white text-[var(--tierra-oscura)] font-bold rounded-full px-2 text-xs">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="py-12 bg-[#FDFBFA] text-center border-b border-[#DCC7B1]/20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl md:text-3xl font-serif italic text-[#4A4238] leading-relaxed">
+                "Un espacio para sanar, <br class="md:hidden"> un espacio para volver a ti."
+            </h2>
+            <div class="mt-4 flex justify-center items-center gap-3">
+                <span class="w-8 h-[1px] bg-[#DCC7B1]"></span>
+                <p class="text-[9px] uppercase tracking-[0.4em] text-[#C4A484] font-bold">Reserva tu momento</p>
+                <span class="w-8 h-[1px] bg-[#DCC7B1]"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white reveal">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2 relative">
+                <img src="photo_2026-02-18_20-54-47.jpg" class="rounded-2xl shadow-2xl w-full h-[200px] object-cover grayscale-[30%]">
+                <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-[#DCC7B1] rounded-2xl -z-10"></div>
+            </div>
+            <div class="w-full md:w-1/2 space-y-6">
+                <h3 class="text-[10px] uppercase tracking-[0.5em] text-[#C4A484] font-bold">La Filosofía</h3>
+                <h2 class="text-4xl font-serif italic text-[#4A4238]">El arte de volver a tu centro.</h2>
+                <p class="text-gray-600 leading-relaxed text-sm">Crecemos creyendo que el bienestar es un destino, cuando en realidad es un ritual diario de escucha y respeto hacia nuestro cuerpo. Soy <strong>Ana Maya</strong>, y mi propósito es acompañarte a redescubrir ese equilibrio.</p>
+                <p class="text-gray-600 italic border-l-2 border-[#DCC7B1] pl-4 text-sm">"Aquí el tiempo se detiene para que tú puedas comenzar de nuevo."</p>
+                <div class="pt-4">
+                    <span class="font-serif italic text-xl text-[#C4A484]">Ana Maya</span>
+                    <p class="text-[9px] uppercase tracking-widest opacity-50">Terapeuta Integral</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="terapias" class="py-20 bg-[var(--blanco-crema)] reveal">
+            <div class="container mx-auto px-6">
+                <div class="mb-12"><h2 class="text-4xl font-serif italic">Terapias Holísticas</h2><div class="w-20 h-1 bg-[var(--arena-maya)] mt-2"></div></div>
+                <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </div>
+        </section>
+
+        <section id="tratamientos" class="py-20 bg-[var(--arena-suave)] reveal border-y border-[var(--arena-maya)]/20">
+            <div class="container mx-auto px-6">
+                <div class="mb-12 text-right md:text-left"><h2 class="text-4xl font-serif italic">Tratamientos Especializados</h2><div class="w-20 h-1 bg-[var(--arena-maya)] mt-2 md:ml-0 ml-auto"></div></div>
+                <div id="treatments-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </div>
+        </section>
+
+        <section id="rituales" class="py-20 bg-[var(--verde-salvia)] reveal">
+            <div class="container mx-auto px-6">
+                <div class="mb-12"><h2 class="text-4xl font-serif italic">Rituales de Bienestar</h2><div class="w-20 h-1 bg-[var(--arena-maya)] mt-2"></div></div>
+                <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white reveal">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="text-3xl font-serif italic text-center mb-12">Dudas comunes</h2>
+                <div class="space-y-4">
+                    <div class="border-b border-[#DCC7B1]/30 pb-4">
+                        <button onclick="toggleFAQ(1)" class="w-full flex justify-between italic text-lg text-[#4A4238]">¿Cómo reservo mi cita? <span id="icon-1">+</span></button>
+                        <div id="faq-1" class="hidden mt-3 text-sm text-gray-500">Al confirmar tu carrito, coordinaremos el día y hora vía WhatsApp.</div>
+                    </div>
+                    <div class="border-b border-[#DCC7B1]/30 pb-4">
+                        <button onclick="toggleFAQ(2)" class="w-full flex justify-between italic text-lg text-[#4A4238]">¿Métodos de pago? <span id="icon-2">+</span></button>
+                        <div id="faq-2" class="hidden mt-3 text-sm text-gray-500">Zelle, transferencia bancaria y efectivo.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="cart-drawer" class="fixed inset-0 bg-black/40 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div id="cart-content" class="absolute right-0 top-0 h-full w-full max-w-md bg-[var(--blanco-crema)] p-8 translate-x-full transition-transform duration-300 flex flex-col">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-serif italic">Tu Selección</h2>
+                <button onclick="toggleCart()" class="text-3xl">&times;</button>
+            </div>
+
+            <div id="cart-items-list" class="flex-grow pr-2"></div>
+
+            <div class="bg-white p-4 rounded-xl border border-[#DCC7B1] my-6 shadow-sm">
+                <div class="flex justify-between items-center mb-3 border-b border-[#DCC7B1]/40 pb-1">
+                    <span class="text-[9px] uppercase font-bold tracking-widest text-[#C4A484]">Datos de Sesión</span>
+                    <svg class="w-3 h-3 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.67-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <div class="space-y-3">
+                    <input type="text" id="client-name" oninput="saveFormData()" placeholder="Nombre completo" class="w-full border-b border-[#DCC7B1] py-1 text-xs outline-none bg-transparent">
+                    <div class="flex gap-4">
+                        <input type="tel" id="client-whatsapp" oninput="saveFormData()" placeholder="WhatsApp" class="w-full border-b border-[#DCC7B1] py-1 text-xs outline-none bg-transparent">
+                        <input type="text" id="order-date" readonly class="w-24 text-[10px] text-right opacity-50 outline-none bg-transparent">
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-[#DCC7B1] pt-4">
+                <div class="flex justify-between text-xl font-bold mb-6">
+                    <span class="italic font-serif text-[#C4A484]">Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold shadow-lg hover:brightness-105 transition-all">Confirmar por WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-16 bg-[#4A4238] text-[#FDFBFA] text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-serif italic mb-2">Ana Maya</h2>
+            <p class="text-[9px] uppercase tracking-[0.4em] opacity-50 mb-8">Terapeuta Integral</p>
+            <div class="flex justify-center gap-8 mb-12 text-[10px] uppercase tracking-widest font-bold">
+                <a href="#" class="hover:text-[#DCC7B1]">Instagram</a>
+                <a href="#" class="hover:text-[#DCC7B1]">Facebook</a>
+            </div>
+            <p class="text-[8px] opacity-30 tracking-[0.5em]">&copy; 2026 ANA MAYA • TODOS LOS DERECHOS RESERVADOS</p>
+        </div>
+    </footer>
+
+    <script>
+        const inventory = [
+            {id:'s1', type:'servicio', name:'Reiki | Sanación', price:65, img:'photo_2026-02-18_20-54-48.jpg'},
+            {id:'s2', type:'servicio', name:'Masajes Relajantes', price:80, img:'photo_2026-02-18_20-54-48.jpg'},
+            {id:'t1', type:'tratamiento', name:'Moxa Chino', price:50, img:'photo_2026-02-18_20-54-48.jpg'},
+            {id:'t2', type:'tratamiento', name:'Piedras Calientes', price:75, img:'photo_2026-02-18_20-54-48.jpg'},
+            {id:'p1', type:'producto', name:'Kit de Sales', price:35, img:'photo_2026-03-02_09-17-39.jpg'},
+            {id:'p2', type:'producto', name:'Caja Bienestar', price:110, img:'photo_2026-03-02_09-17-39.jpg'}
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('anaMayaCart')) || {};
+
+        function init() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+            }, {threshold: 0.1});
+            document.querySelectorAll('.reveal').forEach(s => observer.observe(s));
+
+            renderGrids();
+            loadFormData();
+            document.getElementById('order-date').value = new Date().toLocaleDateString();
+            updateUI();
+        }
+
+        function renderGrids() {
+            inventory.forEach(item => {
+                const html = `
+                    <div class="bg-white rounded-[2rem] p-5 border border-[#DCC7B1]/30 hover:shadow-xl transition-all group">
+                        <div class="h-48 rounded-[1.5rem] mb-4 overflow-hidden">
+                            <img src="${item.img}" class="w-full h-full object-cover group-hover:scale-105 transition-all">
+                        </div>
+                        <h3 class="text-lg font-bold italic font-serif">${item.name}</h3>
+                        <p class="text-[#C4A484] font-bold mb-4">$${item.price.toFixed(2)}</p>
+                        <button onclick="addToCart('${item.id}', '${item.name}', ${item.price})" class="w-full py-2 rounded-full border border-[#4A4238] text-[10px] uppercase font-bold hover:bg-[#4A4238] hover:text-white transition-all">Agregar</button>
+                    </div>`;
+                document.getElementById(`${item.type === 'servicio' ? 'services' : item.type === 'tratamiento' ? 'treatments' : 'products'}-grid`).innerHTML += html;
+            });
+        }
+
+        function addToCart(id, name, price) {
+            cart[id] = cart[id] ? { ...cart[id], qty: cart[id].qty + 1 } : { name, price, qty: 1 };
+            const audio = document.getElementById('chime-sound');
+            if(audio) { audio.currentTime = 0; audio.volume = 0.3; audio.play(); }
+            document.getElementById('cart-btn').classList.add('vibrate');
+            setTimeout(() => document.getElementById('cart-btn').classList.remove('vibrate'), 300);
+            saveCart(); updateUI();
+        }
+
+        function updateUI() {
+            const list = document.getElementById('cart-items-list');
+            let total = 0, count = 0;
+            list.innerHTML = '';
+            Object.keys(cart).forEach(id => {
+                const item = cart[id];
+                total += item.price * item.qty; count += item.qty;
+                list.innerHTML += `
+                    <div class="flex justify-between items-center bg-white p-3 rounded-xl mb-2 border border-stone-100">
+                        <div class="text-[11px] font-bold">${item.name}</div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="changeQty('${id}',-1)" class="qty-btn">-</button>
+                            <span class="text-xs font-bold">${item.qty}</span>
+                            <button onclick="changeQty('${id}',1)" class="qty-btn">+</button>
+                        </div>
+                    </div>`;
+            });
+            document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('cart-counter').innerText = count;
+        }
+
+        function changeQty(id, delta) {
+            cart[id].qty += delta;
+            if(cart[id].qty <= 0) delete cart[id];
+            saveCart(); updateUI();
+        }
+
+        function toggleCart() {
+            const d = document.getElementById('cart-drawer');
+            const c = document.getElementById('cart-content');
+            if(d.classList.contains('hidden')) {
+                d.classList.remove('hidden');
+                setTimeout(() => { d.classList.replace('opacity-0','opacity-100'); c.classList.replace('translate-x-full','translate-x-0'); }, 10);
+            } else {
+                d.classList.replace('opacity-100','opacity-0'); c.classList.replace('translate-x-0','translate-x-full');
+                setTimeout(() => d.classList.add('hidden'), 300);
+            }
+        }
+
+        function toggleFAQ(id) {
+            const f = document.getElementById(`faq-${id}`);
+            f.classList.toggle('hidden');
+            document.getElementById(`icon-${id}`).innerText = f.classList.contains('hidden') ? '+' : '−';
+        }
+
+        function saveCart() { localStorage.setItem('anaMayaCart', JSON.stringify(cart)); }
+        function saveFormData() {
+            localStorage.setItem('anaMayaUser', JSON.stringify({
+                n: document.getElementById('client-name').value,
+                w: document.getElementById('client-whatsapp').value
+            }));
+        }
+        function loadFormData() {
+            const d = JSON.parse(localStorage.getItem('anaMayaUser'));
+            if(d) { document.getElementById('client-name').value = d.n || ''; document.getElementById('client-whatsapp').value = d.w || ''; }
+        }
+
+        function checkoutWhatsApp() {
+            const name = document.getElementById('client-name').value;
+            const wa = document.getElementById('client-whatsapp').value;
+            if(!name || !wa || Object.keys(cart).length === 0) return alert("Completa tus datos.");
+            let m = `✨ *ANA MAYA - ORDEN* ✨\nHola Ana, soy *${name}*.\n\n`;
+            Object.values(cart).forEach(i => m += `✅ ${i.qty}x ${i.name}\n`);
+            m += `\n*TOTAL: ${document.getElementById('cart-total').innerText}*`;
+            window.open(`https://wa.me/13054982374?text=${encodeURIComponent(m)}`, '_blank');
+        }
+
+        init();
+    </script>
+</body>
+</html>
